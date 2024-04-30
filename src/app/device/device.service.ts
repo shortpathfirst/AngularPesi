@@ -16,8 +16,7 @@ export class DeviceService {
   getdeviceChangedObservable():Observable<Device>{
     return this._deviceChanged.asObservable();
   }
-///////OBSERVABLE INSIDE THOSE METHODS:
-/////////MAKE THEM PUBLIC VARIABLES
+
 _selectorWidth!:number;
 _selectorHeight!:number;
 _showWidth!:number;
