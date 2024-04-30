@@ -11,7 +11,7 @@
         </li>
     </div>
     <div class="barra" [ngStyle]="{'width.rem':getBarLength()}" (click)="activateTabBar()">
-        <p>{{barbell}} kg</p>
+        <p>{{getBarbell()}} kg</p>
     </div>
     <div class="stack Sinistro" (click)="activateTabPlate()">
         <li class="dischi" [ngStyle]="{

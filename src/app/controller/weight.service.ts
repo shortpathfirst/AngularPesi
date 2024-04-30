@@ -25,6 +25,7 @@ export class WeightService {
     this.stack.pesi.push(Stack.RED);
     this.stack.pesi.push(Stack.RED);
     this.stack.total = 260;
+    this.stack.barbell=20;
   }
 
   getWeightObservable():Observable<Stack>{ 
@@ -86,7 +87,9 @@ export class WeightService {
   }
 
 caricaPesi(valoreStack:number,liftpage?:boolean):Peso[]{ //liftpage = true non agisce solo sulla view
-  let refStack:Stack = new Stack();
+  
+  let refStack:Stack;
+  liftpage ? refStack=new Stack() : refStack = this.stack; //To get the barbell
   refStack.pesi=[];
   refStack.total=valoreStack;
   let stack = (refStack.total-refStack.barbell)/2;

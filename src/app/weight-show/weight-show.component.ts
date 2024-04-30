@@ -20,7 +20,7 @@ import { DeviceService } from '../device/device.service';
 
 export class WeightShowComponent implements OnInit,AfterViewInit,OnChanges {
   pesi:Peso[] = []; //Pesi attualmente in mostra
-
+  barbell!:number;
   @Input()
   totale!:number;
 
@@ -69,8 +69,8 @@ export class WeightShowComponent implements OnInit,AfterViewInit,OnChanges {
     return this.deviceService._font
   }
 
-  get barbell(){
-    return this.weightService.getBarWeight();
+  getBarbell(){
+    return this.barbell=this.weightService.getBarWeight();
   }
   activateTabPlate(){
     this.weightService.selectedTab = 0;
