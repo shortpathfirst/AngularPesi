@@ -1,0 +1,27 @@
+<div #scrollMe class="content" appDeviceDetector>
+    <div class="showRoom" > 
+        <div class="weights" *ngFor="let weight of weightList">
+            <weight-show #show [totale]="weight.total"></weight-show>
+            
+            <div class="description" [ngStyle]="{'font-size.rem':getfontLiftPage()}">
+                <div class="stats"[ngStyle]="{'max-height.rem':getfontLiftPage()+1}">
+                    <input #name id="name" [value]="weight.title" (keyup.enter)="updateTitle(weight.id,name.value)" [ngStyle]="{'font-size.rem':getfontLiftPage()+1.8}">
+                </div>
+                <div class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
+                    <label>Total:</label>
+                    <input #total id="total" [value]="weight.total" (keyup)="updateTotal(weight.id,total.value)">
+                </div>
+                <div class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
+                    <label>Set:</label>
+                    <input #set id="set" [value]="weight.set"(keyup.enter)="updateSet(weight.id,set.value)">
+                </div>
+                <div class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
+                    <label>Rep:</label>
+                    <input #rep id="rep" [value]="weight.rep"(keyup.enter)="updateRep(weight.id,rep.value)">
+                </div>
+            </div>
+        </div>
+    </div>
+    <default-button (onClick)="addWeight();" text="Add Exercise" class="button">
+    </default-button>
+</div>

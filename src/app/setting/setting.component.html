@@ -1,0 +1,35 @@
+<div class="content">
+    <label>Height</label>
+    <mat-slider discrete min="1" max="10" step="0.1" >
+        <input matSliderThumb [(ngModel)]="heightIndex" [value]="heightIndex"(input)="setPlateHeight($event)">
+    </mat-slider>
+    <label>Width</label>
+    <mat-slider discrete min="1" max="5" step="0.1" >
+        <input matSliderThumb [(ngModel)]="widthIndex" [value]="widthIndex"(input)="setPlateWidth($event)">
+    </mat-slider>
+
+    <label>Bar Length</label>
+    <mat-slider discrete min="1" max="141" step="0.5" >
+        <input matSliderThumb [(ngModel)]="barIndex" [value]="barIndex"(input)="setBarLength($event)">
+    </mat-slider>
+
+    <button id="reset" type="button" (click)="reset()"> Reset</button>
+    <div class="plates" >
+        <li  *ngFor="let peso of pesi" [ngStyle]=" peso.isUsable()?{
+            backgroundColor: peso.color, 
+            'height.rem':3, 'width.rem':3, 
+            'font-size.rem':1 }:{
+                backgroundColor: peso.color, 
+                'opacity':0.4,
+            'height.rem':3, 'width.rem':3, 
+            'font-size.rem':1 
+            }"
+
+            (click)="toggleWeight(peso);">
+
+            {{peso.valore}}
+            
+        </li>
+    </div>
+
+</div>

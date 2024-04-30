@@ -1,0 +1,73 @@
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    margin-left:auto;
+    margin-right:auto;
+    height: 10rem;
+}
+div{
+    width: 100%;
+}
+.bilanciere{
+    display: flex;
+    float:right;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;    
+    position: absolute;
+    overflow-x: auto;
+}
+.bilanciere::-webkit-scrollbar{
+    width: 4px;
+    background: rgb(204, 165, 231);
+    box-shadow: inset 0 0 4px #707070;
+}
+.bilanciere::-webkit-scrollbar-thumb{
+    background: rgb(185, 96, 212);
+    border-radius: 10px;
+}
+.stack{
+    display:flex;
+    border-radius: 9px;
+    user-select: none;
+    align-items: center;
+    cursor: pointer;
+}
+.Destro{
+    flex-direction:row;
+    justify-content: end;
+}
+.Sinistro{
+    justify-content: start;
+    flex-direction:row-reverse;
+}
+li.dischi{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius: 9px;
+}
+.barra {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    height: 18px;
+    background-color: #c5c5c5;
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}

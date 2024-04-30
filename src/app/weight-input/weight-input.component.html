@@ -1,0 +1,21 @@
+<div class="input">
+    <form [formGroup]="pesoForm" (ngSubmit)="submit()">
+        <text-input 
+        [control]="fc['peso']"
+        [showErrorsWhen]="isSubmitted"
+        label="Peso">
+        </text-input>
+        <default-button text="Submit" class="button" (click)="submit()">
+        </default-button>
+    </form>
+
+    <div class="reset">
+        <default-button (click)="optimize()" text="Optimize" class="button">
+        </default-button>
+    </div>
+    <div class="reset">
+        <default-button  (click)="reset()" text="Reset" class="button">
+        </default-button>
+    </div>
+</div>
+

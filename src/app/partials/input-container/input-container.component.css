@@ -1,0 +1,21 @@
+.container{
+    width: 16rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0.3rem;
+    border-left: 3px solid blueviolet;
+
+}
+
+label{
+    display:inline-block;
+    margin-left: .5rem;
+    font-size: 1rem;
+    color: #5f5f5f;
+}
+
+.content{
+    padding: 0 0 .5rem;
+    height: 2.5rem;
+    display: flex;
+    white-space: nowrap;
+}

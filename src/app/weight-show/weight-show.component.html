@@ -1,0 +1,27 @@
+<div class="content">
+    <div class="bilanciere" #divBilanciere>
+    <div class="stack Destro" (click)="activateTabPlate()">
+        <li class="dischi" [ngStyle]="{
+            backgroundColor: peso.color,
+            'font-size.rem':getFontSize(),
+            'height.rem':getHeightForWeight(+peso.getHeight()), 
+            'width.rem':getWidthForWeight(+peso.getWidth())}"
+             *ngFor="let peso of pesi">
+            {{peso.valore}}
+        </li>
+    </div>
+    <div class="barra" [ngStyle]="{'width.rem':getBarLength()}" (click)="activateTabBar()">
+        <p>{{barbell}} kg</p>
+    </div>
+    <div class="stack Sinistro" (click)="activateTabPlate()">
+        <li class="dischi" [ngStyle]="{
+            backgroundColor: peso.color, 
+            'font-size.rem':getFontSize(),
+            'height.rem':getHeightForWeight(+peso.getHeight()), 
+            'width.rem':getWidthForWeight(+peso.getWidth())}" 
+            *ngFor="let peso of pesi">
+            {{peso.valore}}
+        </li>
+    </div>
+    </div>
+</div>

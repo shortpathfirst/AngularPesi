@@ -1,0 +1,7 @@
+.error-list{
+    position: absolute;
+    margin-left:0.4rem;
+    color:red;
+    font-size: 0.95rem;
+    user-select: none;
+}

@@ -1,0 +1,44 @@
+<div class="content">
+
+<mat-tab-group #tabs [selectedIndex]="getSelectedTab()"  mat-align-tabs="center"class="example-stretched-tabs mat-elevation-z4">
+    <mat-tab label="Plates"> 
+      <div class="example-large-box ">
+        <div class="plates"  [ngStyle]="{width:plateSpacing}">
+          <li *ngFor="let peso of pesi let i = index" [ngStyle]=" hovered===i ? hoverStyle(peso.color) : {
+            backgroundColor: peso.color, 
+            'height.rem':height, 'width.rem':width, 
+            'font-size.rem':font }"
+            (mouseover)="hovered=i"
+            (mouseout)="hovered=-1"
+            (click)="addWeight(peso)">
+
+            {{peso.valore}}
+
+          </li>
+          <mat-radio-group class="radio" [(ngModel)]="selectedOption">
+            <mat-radio-button value="1" checked>
+            Add in Order
+            </mat-radio-button>
+            
+            <mat-radio-button value="2">
+            Add Last
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Bar">
+    
+      <li class="barweight" *ngFor="let bar of getBarWeights()"  (click)="changeBar(bar)">
+        {{bar}} Kg
+      </li>
+   
+    </mat-tab>
+    <mat-tab label="Settings">
+        <div class="example-large-box">
+            <settings></settings>
+        </div>
+    </mat-tab>
+  </mat-tab-group>
+  
+</div>

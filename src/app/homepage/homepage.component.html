@@ -1,0 +1,12 @@
+<div class="content" [ngStyle]="{'padding-top.rem':padding_top}" appDeviceDetector>
+
+        <button class="liftButton" (click)="liftPage()">Lift page</button>
+
+    <div class="totale">
+        <a [ngStyle]="{color:color,'font-size.rem':fontRem}">{{total}} Kg</a> 
+    </div>
+    <weight-show></weight-show>
+    <weight-input></weight-input>
+    <weight-selector></weight-selector>
+   
+</div>
