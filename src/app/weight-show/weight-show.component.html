@@ -1,5 +1,6 @@
 <div class="content">
     <div class="bilanciere" #divBilanciere>
+        
     <div class="stack Destro" (click)="activateTabPlate()">
         <li class="dischi" [ngStyle]="{
             backgroundColor: peso.color,
@@ -7,11 +8,15 @@
             'height.rem':getHeightForWeight(+peso.getHeight()), 
             'width.rem':getWidthForWeight(+peso.getWidth())}"
              *ngFor="let peso of pesi">
-            {{peso.valore}}
+            {{showWeightText(""+peso.valore)}}
         </li>
     </div>
+    <div class="barra" style=" width: 35px;height: 28px;" (click)="activateTabBar()">
+    </div>
     <div class="barra" [ngStyle]="{'width.rem':getBarLength()}" (click)="activateTabBar()">
-        <p>{{getBarbell()}} kg</p>
+        <p>{{showWeightText(""+getBarbell()+"kg")}} </p>
+    </div>
+    <div class="barra" style=" width: 35px;height: 28px;" (click)="activateTabBar()">
     </div>
     <div class="stack Sinistro" (click)="activateTabPlate()">
         <li class="dischi" [ngStyle]="{
@@ -20,7 +25,7 @@
             'height.rem':getHeightForWeight(+peso.getHeight()), 
             'width.rem':getWidthForWeight(+peso.getWidth())}" 
             *ngFor="let peso of pesi">
-            {{peso.valore}}
+            {{showWeightText(""+peso.valore)}}
         </li>
     </div>
     </div>

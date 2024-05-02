@@ -1,6 +1,6 @@
 import { Directive, HostListener, OnInit } from '@angular/core';
 import { DeviceService } from './device.service';
-// import * as _ from 'lodash';
+import * as _ from 'lodash';
 export enum Device {
   X_SMALL,
   SMALL = 450,
@@ -29,15 +29,15 @@ export class DeviceDetectorDirective implements OnInit {
     
     // Find the device corresponding to the current width
     for (const key in Device) {
-      // if (!_.isNaN(+key)) {
-      //   continue;
-      // }
+      if (!_.isNaN(+key)) {
+        continue;
+      }
       if (width > +Device[key]) {
         device = +Device[key];
-        //continue;
+        continue;
       }
 
-      //break;
+      break;
     }
     if (device !== this.lastDevice) {
       this.lastDevice = device;

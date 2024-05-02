@@ -23,7 +23,7 @@ export class WeightShowComponent implements OnInit,AfterViewInit,OnChanges {
   barbell!:number;
   @Input()
   totale!:number;
-
+  
   @ViewChild('divBilanciere',{static:false})
   bilanciereRef!:ElementRef;
 
@@ -56,17 +56,17 @@ export class WeightShowComponent implements OnInit,AfterViewInit,OnChanges {
     if(scrollWid>clientWid && scrollWid && clientWid)  //Esiste scrollbar
       this.bilanciereRef.nativeElement.scrollTo((scrollWid-clientWid)/2,0);
   }
-  getWidthForWeight(width:number):number{ //in proporzione
-    return this.deviceService._showWidth
+  getWidthForWeight(width:number):number{ 
+    return this.deviceService.deviceSettings._showWidth;
   }
-  getHeightForWeight(height:number):number{//in proporzione
-    return this.deviceService._showHeight
+  getHeightForWeight(height:number):number{
+    return this.deviceService.deviceSettings._showHeight;
   }
   getBarLength():number{
-    return this.deviceService._barLength
+    return this.deviceService.deviceSettings._barLength;
   }
   getFontSize():number{
-    return this.deviceService._font
+    return this.deviceService.deviceSettings._font;
   }
 
   getBarbell(){
@@ -77,5 +77,10 @@ export class WeightShowComponent implements OnInit,AfterViewInit,OnChanges {
   }
   activateTabBar(){
     this.weightService.selectedTab = 1;
+  }
+  showWeightText(value:string):string{
+    let isChecked = this.weightService.checkedWeightText;
+    if(!isChecked) return "";
+    return ""+value;
   }
 }

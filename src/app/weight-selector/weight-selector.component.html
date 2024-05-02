@@ -10,8 +10,9 @@
             'font-size.rem':font }"
             (mouseover)="hovered=i"
             (mouseout)="hovered=-1"
-            (click)="addWeight(peso)">
-
+            (click)="addWeight(peso)"
+            (contextmenu)="removeWeight(peso,$event)">
+            
             {{peso.valore}}
 
           </li>
@@ -23,7 +24,9 @@
             <mat-radio-button value="2">
             Add Last
             </mat-radio-button>
+            <mat-checkbox labelPosition="after" checked (change)="toggleValueCheckBox()">Text value</mat-checkbox>
           </mat-radio-group>
+          
         </div>
       </div>
     </mat-tab>

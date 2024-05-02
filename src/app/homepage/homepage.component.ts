@@ -4,7 +4,7 @@ import { WeightShowComponent } from '../weight-show/weight-show.component';
 import { WeightSelectorComponent } from '../weight-selector/weight-selector.component';
 import { WeightInputComponent } from '../weight-input/weight-input.component';
 import { WeightService } from '../controller/weight.service';
-import { DeviceDetectorDirective } from '../device/device-detector.directive';
+import { Device } from '../device/device-detector.directive';
 import { DeviceService } from '../device/device.service';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [CommonModule, WeightShowComponent,WeightSelectorComponent,WeightInputComponent,DeviceDetectorDirective],
+  imports: [CommonModule, WeightShowComponent,WeightSelectorComponent,WeightInputComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
@@ -40,7 +40,14 @@ export class HomepageComponent implements OnInit {
     weightService.getWeightObservable().subscribe((valore)=>{this.total = valore.total; this.effectTotal();})
   }
   ngOnInit(): void {
-    this.padding_top=this.deviceService._padding; //make observable or change only with device 1 time
+    this.deviceService.getdeviceChangedObservable().subscribe((device:Device)=>{
+      if(device == Device.SMALL || device == Device.X_SMALL)
+        this.padding_top=4.5;
+      else{
+        this.padding_top = 7;
+      }
+
+    });
   }
   
   // import { motion, useAnimationControls } from "framer-motion"

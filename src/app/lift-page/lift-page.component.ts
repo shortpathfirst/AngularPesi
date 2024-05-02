@@ -2,9 +2,7 @@ import { CommonModule } from '@angular/common';
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { WeightShowComponent } from '../weight-show/weight-show.component';
 import { DeviceService } from '../device/device.service';
-import { DeviceDetectorDirective } from '../device/device-detector.directive';
-import { WeightService } from '../controller/weight.service';
-import { ReactiveFormsModule} from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { DefaultButtonComponent } from '../partials/default-button/default-button.component';
 import { Lift } from '../models/Lift';
 import { LiftPageService } from '../controller/lift-page.service';
@@ -14,7 +12,7 @@ import { LiftPageService } from '../controller/lift-page.service';
 @Component({
   selector: 'app-lift-page',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,DefaultButtonComponent,WeightShowComponent,DeviceDetectorDirective],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule,DefaultButtonComponent,WeightShowComponent],
   templateUrl: './lift-page.component.html',
   styleUrl: './lift-page.component.css'
 })
@@ -23,10 +21,12 @@ export class LiftPageComponent implements OnInit,AfterViewChecked{
   deviceWidth!:number;
   newLift:boolean = false;
   weightList!:Lift[];
+  descriptionForm!: FormGroup;
 
   @ViewChild('scrollMe') private myScrollContainer!:ElementRef;
 
-  constructor(private deviceService:DeviceService,private liftService:LiftPageService){
+
+  constructor(private deviceService:DeviceService,private liftService:LiftPageService,private formBuilder:FormBuilder){
     this.liftService.getLiftObservable().subscribe((lift)=>{this.weightList=lift;})
   }
   ngAfterViewChecked(): void {
@@ -35,9 +35,33 @@ export class LiftPageComponent implements OnInit,AfterViewChecked{
       this.newLift = false;
     }
   }
-  ngOnInit(): void {
-    this.liftService.getLiftObservable().subscribe((lift)=>{this.weightList=lift;})
+  ngOnInit(): void { //status changed subscribe goes here
+    //get field value with service
+    this.liftService.getLiftObservable().subscribe((lift)=>{this.weightList=lift;});
+    // this.descriptionForm = this.formBuilder.group({
+    //   lifts: this.formBuilder.array([
+    //     this.formBuilder.group({
+    //       name:[null,[Validators.required]],
+    //       total:[null,[Validators.required]],
+    //       set:[null,[Validators.required]],
+    //       rep:[null,[Validators.required]]
+    //     })
+    //   ])
+    // });
   } 
+  initWeightRow():FormGroup{
+    return this.formBuilder.group({
+      name:[null,[Validators.required]],
+          total:[null,[Validators.required]],
+          set:[null,[Validators.required]],
+          rep:[null,[Validators.required]]
+    });
+  }
+
+
+  get fc(){
+    return this.descriptionForm.controls;
+  }
   scrollToBottom(){
     try{
       this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
@@ -45,23 +69,18 @@ export class LiftPageComponent implements OnInit,AfterViewChecked{
   }
 
   getfontLiftPage():number{
-    return this.deviceWidth=this.deviceService.liftPageFont;
+    return this.deviceWidth=this.deviceService.deviceSettings._liftPageFont;
   }
   addWeight(){
     this.newLift = true;
-    let id = this.liftService.getLastID()+1;
-    this.liftService.addLift({title:"New",
-    total:60,
-    set:"0",
-    rep:"0",
-    id:id
-  });
+    this.liftService.addNewLift();
   }
   updateTitle(id:number,title:string){
     this.liftService.updateTitle(id,title);
   }
   updateTotal(id:number,total:string){
     this.liftService.updateTotal(id,total);
+
   }
   updateSet(id:number,set:string){
     this.liftService.updateSet(id,set);
@@ -69,5 +88,9 @@ export class LiftPageComponent implements OnInit,AfterViewChecked{
   updateRep(id:number,rep:string){
     this.liftService.updateRep(id,rep);
   }
+  remove(id:number){
+    this.liftService.remove(id);
+  }
+
 }
 

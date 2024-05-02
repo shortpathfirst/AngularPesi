@@ -44,14 +44,5 @@ export class WeightInputComponent implements OnInit {
   optimize(){
     this.weightService.caricaPesi(this.weightService.getTotal());
   }
-  get buttonFontSize(){
-    return this.deviceService._buttonFont
-  }
-  get buttonWidth(){
-    return this.deviceService._buttonWidth
-  }
-  get buttonHeight(){
-    return this.deviceService._buttonHeight
-  }
 
 }

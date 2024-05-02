@@ -1,17 +1,18 @@
 
-☐ Save local storage
+☐ Undo
+    ☐ Take back weight
 
-☐ Set default [ng style]for the plates
-☐ get selected plate nel file md
+✔ Set default [ng style]for the plates @done (5/1/2024, 9:48:35 AM)
 
 ☐ EXTRA
-    ☐ ADDKG O(1) INSTEAD OF (O(PLATES)) accesso per index
-    ☐ Observable in device
-    ☐ Corregger Peso 1 to 1.25 
+
     ☐ getwidth in showweight in % del peso per differenti altezze
     ☐ lightgray in .stack show weight 
-    ☐ FRECCIA SUL PESO APPENA AGGIUNTO (A EVANESCENZA) o ingrandimento peso
+   
     ☐ % of plate height for different settings
+    ☐ get selected plate nel file md
+    ☐ use for heights setting 
+    ☐ %of plate for different heights
 ____________________________
     USE ng add @angular/material
 npm install @material/tabs
@@ -72,3 +73,19 @@ ____________________________________
     ✔ weight subject per la lista @done (4/30/2024, 5:58:28 PM)
     ✔ ids in weightservice @done (4/30/2024, 5:58:31 PM)
     ✔ get selected plates with filter @done (4/30/2024, 5:58:33 PM)
+
+        ✔ ADDKG O(1) INSTEAD OF (O(PLATES)) accesso per index @done (5/1/2024, 9:30:55 AM)
+    ✔ Observable in device @done (5/1/2024, 9:30:57 AM)
+    ✔ Corregger Peso 1 to 1.25 @done (5/1/2024, 9:31:01 AM)
+    ✘ FRECCIA SUL PESO APPENA AGGIUNTO (A EVANESCENZA) o ingrandimento peso @cancelled (5/1/2024, 1:44:54 PM)
+
+    ✔ INPUT BREAK LIFTPAGE @done (5/2/2024, 12:31:35 PM)
+    ✔ add FORM CONTROL in input @done (5/2/2024, 12:31:37 PM)
+    ✔ set max input @done (5/2/2024, 12:31:39 PM)
+    ✔ empty list doent' add lift @done (5/2/2024, 12:31:42 PM)
+
+
+✔ Save local storage @done (5/1/2024, 7:35:33 PM)
+    ✔ OBSERVABLE DEVICE SU setting @done (5/1/2024, 6:27:52 PM)
+    ☐ peso LOCAL STORAGE (FOR IS USABLE)
+✔ Remove exercise @done (5/1/2024, 11:17:26 PM)

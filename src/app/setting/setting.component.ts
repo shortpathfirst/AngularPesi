@@ -5,6 +5,7 @@ import { DeviceService } from '../device/device.service';
 import {MatSliderModule} from '@angular/material/slider';
 import { WeightService } from '../controller/weight.service';
 import { Peso } from '../models/Peso';
+import { Device } from '../device/device-detector.directive';
 @Component({
   selector: 'settings',
   standalone: true,
@@ -16,33 +17,41 @@ export class SettingComponent {
 
 
   heightIndex:number=4.5;
-  widthIndex:number=2;
-  barIndex:number=70;
+  widthIndex:number=4.5;
+  barIndex:number=4.5;
 
   pesi:Peso[] = this.weightService.getPlatesSet();
 
   constructor(private deviceService:DeviceService,private weightService:WeightService){
-    
+    this.deviceService.getdeviceChangedObservable().subscribe(()=>{
+        this.heightIndex=4.5;
+        this.widthIndex=4.5;
+        this.barIndex=4.5;
+      }
+    )
   }
 
   setPlateHeight(event: any) {
-    this.deviceService._showHeight = this.deviceService.D_showHeight *50/100*((event.target.value-1/9) -0.5);
+    // this.deviceService.getdeviceChangedObservable().subscribe((device:Device)=>{
+    //   return;
+    // });
+    this.deviceService.deviceSettings._showHeight = this.deviceService.defaultSettings._showHeight *25/100*((event.target.value-1/9) -0.5);
+
   }
   setPlateWidth(event: any) {
-    this.deviceService._showWidth = this.deviceService.D_showWidth *50/100*((event.target.value-1/4 )-0.5);
+    this.deviceService.deviceSettings._showWidth = this.deviceService.defaultSettings._showWidth *25/100*((event.target.value-1/4 )-0.5);
+
   }
   setBarLength(event: any) {
-    this.deviceService._barLength = this.deviceService.D_barLength *50/100*((event.target.value-1/9 )-0.5);
+    this.deviceService.deviceSettings._barLength = this.deviceService.defaultSettings._barLength *50/100*((event.target.value-1/9 )-0.5);
+
   }
   
   reset(){
-    this.deviceService._barLength= this.deviceService.D_barLength;
-    this.deviceService._showHeight= this.deviceService.D_showHeight; 
-    this.deviceService._showWidth= this.deviceService.D_showWidth;
-
-    this.heightIndex=5;
-    this.widthIndex=2.5;
-    this.barIndex=70;
+    this.deviceService.deviceSettings = this.deviceService.defaultSettings;
+    this.heightIndex=4.5;
+    this.widthIndex=4.5;
+    this.barIndex=4.5;
   }
 
   toggleWeight(peso: Peso) {//PESO VIENE MODIFICATO USARE OBSERVABLE

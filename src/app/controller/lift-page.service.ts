@@ -6,61 +6,7 @@ import { Lift } from '../models/Lift';
   providedIn: 'root'
 })
 export class LiftPageService {
-
-  tot!:number[];
-  liftList!:Lift[]; 
-  private liftSubject = new BehaviorSubject<Lift[]>(this.liftList); //use getLiftFromLocalStorage
-  public liftObservable:Observable<Lift[]>;
-
-  constructor() { 
-    this.liftList=this.weightList2;
-    this.liftSubject.next(this.liftList);
-    this.liftObservable = this.liftSubject.asObservable();
-  }
-  addLift(lift:Lift){
-    this.liftList.push(lift);
-    this.liftSubject.next(this.liftList);
-  }
-  getLastID() {
-    return this.liftList[this.liftList.length-1].id;
-  }
-  getLiftObservable():Observable<Lift[]>{ 
-    return this.liftSubject.asObservable();
-  }
-
-  updateTitle(id: number, title: string) {
-    let lift = this.liftList.find(lift => lift.id == id);
-    if(lift)
-      lift.title = title;
-  }
-  updateRep(id: number, rep: string) {
-    let lift = this.liftList.find(lift => lift.id == id);
-    if(lift)
-      lift.rep = rep;
-  }
-  updateSet(id: number, set: string) {
-    let lift = this.liftList.find(lift => lift.id == id);
-    if(lift)
-      lift.set = set;
-  }
-  updateTotal(id: number, total: string) {
-    let lift = this.liftList.find(lift => lift.id == id);
-    if(!lift)  return;
-    if(!Number(total) || +total<20 || +total>3200)
-      lift.total = 20;
-    
-    lift.total = +total;
-  }
-  private setUserToLocalStorage(lift:Lift){
-    localStorage.setItem('Lift',JSON.stringify(lift));
-  }
-
-  private getUserFromLocalStorage():Lift{
-    const liftJson = localStorage.getItem('Lift');
-    if(liftJson) return JSON.parse(liftJson) as Lift;
-    return new Lift(); //if there's no value to localstorage
-  }
-
+ 
   private weightList2=[
     {title:"Squat",
       total:140,
@@ -81,4 +27,74 @@ export class LiftPageService {
       id:2,
     },
   ];
+  tot!:number[];
+  liftList:Lift[] =this.getLiftFromLocalStorage();
+  private liftSubject = new BehaviorSubject<Lift[]>(this.liftList);
+
+
+  constructor() { 
+  }
+  addNewLift(){
+    let id = this.getLastID()+1;
+    this.liftList.push({title:"New", total:60, set:"0",rep:"0",id:id});
+    this.liftSubject.next(this.liftList);
+    this.setLiftToLocalStorage();
+  }
+  getLastID():number { //List could have id holes
+    return this.liftList.length > 0 ? this.liftList[this.liftList.length-1].id : -1;
+  }
+  getLiftObservable():Observable<Lift[]>{ 
+    return this.liftSubject.asObservable();
+  }
+
+  updateTitle(id: number, title: string) {
+    let lift = this.liftList.find(lift => lift.id == id);
+    if(lift)
+      lift.title = title;
+    this.setLiftToLocalStorage();
+  }
+  updateRep(id: number, rep: string) {
+    let lift = this.liftList.find(lift => lift.id == id);
+    if(lift)
+      lift.rep = rep;
+    this.setLiftToLocalStorage();
+  }
+  updateSet(id: number, set: string) {
+    let lift = this.liftList.find(lift => lift.id == id);
+    if(lift)
+      lift.set = set;
+    this.setLiftToLocalStorage();
+  }
+  updateTotal(id: number, total: string) {
+    let lift = this.liftList.find(lift => lift.id == id);
+    if(!lift)  return;
+
+    if(!Number(total) || +total<20 || +total>3200) {
+      lift.total = 20;
+      this.setLiftToLocalStorage();
+      return;
+    }
+
+    lift.total = +total;
+    this.setLiftToLocalStorage();
+  }
+  remove(id: number) {
+    const lift = this.liftList.find(lift => lift.id == id);
+    if(!lift) return;
+    const index = this.liftList.indexOf(lift);
+    if(index ===-1) return;
+    this.liftList.splice(index,1);
+    this.setLiftToLocalStorage();
+  }
+  private setLiftToLocalStorage(){
+    localStorage.setItem('Lift',JSON.stringify(this.liftList));
+    this.liftSubject.next(this.liftList);
+  }
+
+  private getLiftFromLocalStorage():Lift[]{
+    const liftJson = localStorage.getItem('Lift');
+    return liftJson ? JSON.parse(liftJson): this.weightList2; //if there's no value to localstorage
+  }
+
+
 }

@@ -32,13 +32,13 @@ constructor(private deviceService:DeviceService){
 
 }
 get buttonFontSize(){
-  return this.deviceService._buttonFont
+  return this.deviceService.deviceSettings._buttonFont;
 }
 get buttonWidth(){
-  return this.deviceService._buttonWidth
+  return this.deviceService.deviceSettings._buttonWidth;
 }
 get buttonHeight(){
-  return this.deviceService._buttonHeight
+  return this.deviceService.deviceSettings._buttonHeight;
 }
 
 

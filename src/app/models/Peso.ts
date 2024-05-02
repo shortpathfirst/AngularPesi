@@ -1,10 +1,8 @@
 export class Peso{
-    //kg//lbs
-    height:string="4rem"; //make it private
-    width:string="1rem";
 
-    // height:string="8.5rem"; //make it private
-    // width:string="2rem";
+    private height:string="4rem";
+    private width:string="1rem";
+
     constructor(
         private kg:number,
         private colour:string, 

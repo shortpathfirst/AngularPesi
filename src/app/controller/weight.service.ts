@@ -7,7 +7,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WeightService {
+
   selectedTab=0; //Click on weights
+  checkedWeightText:boolean=true;
 
   private stack:Stack = new Stack(); // HOME PAGE
   private weightSubject: BehaviorSubject<Stack> = new BehaviorSubject(this.stack); 
@@ -38,7 +40,9 @@ export class WeightService {
   getSelectedTab():number{
     return this.selectedTab;
   }
-
+  toggleCheckBox(){
+    this.checkedWeightText = !this.checkedWeightText;
+  }
   getPlatesSet():Peso[]{ 
     return Stack.defaultSet;
   }
@@ -86,7 +90,7 @@ export class WeightService {
     //TO DO
   }
 
-caricaPesi(valoreStack:number,liftpage?:boolean):Peso[]{ //liftpage = true non agisce solo sulla view
+caricaPesi(valoreStack:number,liftpage?:boolean):Peso[]{ //liftpage = true non agisce solo sulla view //come commento speciale
   
   let refStack:Stack;
   liftpage ? refStack=new Stack() : refStack = this.stack; //To get the barbell
@@ -113,4 +117,25 @@ caricaPesi(valoreStack:number,liftpage?:boolean):Peso[]{ //liftpage = true non a
       }//if totale ottenuto != stack total return new total
     }
   }
+
+removeWeight(peso: Peso) {
+  // let sameWeight = this.stack.pesi.find((p)=>{p.valore == peso.valore});
+  // if(!sameWeight) return;
+
+  let index=0;
+  let found =  false;
+  for(let i=0; i<this.stack.pesi.length; i++){
+      if(this.stack.pesi[i].valore == peso.valore){
+          index=i;
+          found = true;
+      }
+  }
+  if(!found) return;
+  
+  this.stack.pesi.splice(index,1);
+  let kg = peso.valore; 
+  this.stack.total-=kg*2;
+  
+  this.weightSubject.next(this.stack); 
+}
 }

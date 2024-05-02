@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component} from '@angular/core';
+import { Component, HostListener} from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import { WeightService } from '../controller/weight.service';
 import { Peso } from '../models/Peso';
@@ -7,11 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio'
 import { DeviceService } from '../device/device.service';
 import { SettingComponent } from '../setting/setting.component';
-
+import {MatCheckbox} from '@angular/material/checkbox'
+import e from 'express';
 @Component({
   selector: 'weight-selector',
   standalone: true,
-  imports: [CommonModule,MatTabsModule,MatRadioModule,ReactiveFormsModule,FormsModule,SettingComponent],
+  imports: [CommonModule,MatTabsModule,MatRadioModule,ReactiveFormsModule,FormsModule,SettingComponent,MatCheckbox],
   templateUrl: './weight-selector.component.html',
   styleUrl: './weight-selector.component.css'
 })
@@ -22,6 +23,9 @@ export class WeightSelectorComponent{
   style!:any;
   hovered:number=-1;
   selectedOption:string="1";
+  isCheckBox:boolean = true;
+
+
   constructor(private weightService:WeightService,private deviceService:DeviceService){
     this.pesi = weightService.getPlatesSet();
   }
@@ -31,16 +35,16 @@ export class WeightSelectorComponent{
    return this.style;
   }
   get width():number{
-    return this.deviceService._selectorWidth
+    return this.deviceService.deviceSettings._selectorWidth;
   }
   get height():number{
-    return this.deviceService._selectorHeight
+    return this.deviceService.deviceSettings._selectorHeight;
   }
   get font():number{
-    return this.deviceService._font
+    return this.deviceService.deviceSettings._font;
   }
   get plateSpacing():string {
-    return this.deviceService._rastrelliera
+    return this.deviceService.deviceSettings._rastrelliera;
   }
   getSelectedTab():number{
     return this.weightService.getSelectedTab();
@@ -56,8 +60,17 @@ export class WeightSelectorComponent{
     }
     this.weightService.updateWeight(peso,true);
   }
+  
+  @HostListener('contextmenu', ['$event'])
+  removeWeight(peso: Peso,event:any) {
+    this.weightService.removeWeight(peso);
+    event.preventDefault();
+  }
   getBarWeights():number[]{
     return this.weightService.getBarSet();
+  }
+  toggleValueCheckBox() {
+    this.weightService.toggleCheckBox();
   }
 
 }
