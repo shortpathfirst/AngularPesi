@@ -1,6 +1,6 @@
 <div class="content">
 
-<mat-tab-group #tabs [selectedIndex]="getSelectedTab()"  mat-align-tabs="center"class="example-stretched-tabs mat-elevation-z4">
+<mat-tab-group #tabs [selectedIndex]="getSelectedTab()" dynamicHeight mat-align-tabs="center"class="example-stretched-tabs mat-elevation-z4">
     <mat-tab label="Plates"> 
       <div class="example-large-box ">
         <div class="plates"  [ngStyle]="{width:plateSpacing}">
@@ -10,8 +10,9 @@
             'font-size.rem':font }"
             (mouseover)="hovered=i"
             (mouseout)="hovered=-1"
-            (pointerdown)="holdStart()" 
-            (pointerup)="addOrRemove(peso)"                                      
+            (click)="addWeight(peso)"
+            (tapstart)="holdStart()"
+            (tapend)="addOrRemove(peso)"              
             (contextmenu)="removeWeight(peso,$event)">
             
 

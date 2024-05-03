@@ -69,7 +69,8 @@ export class WeightSelectorComponent{
 
   private timeStart!:number;
   private timeEnd!:number;
-
+  // (pointerdown)="holdStart()" 
+  // (pointerup)="addOrRemove(peso)"   
   holdStart(){
     this.timeStart = new Date().getSeconds();
   }

@@ -2,8 +2,7 @@
     <div class="showRoom" > 
         <div class="weights" *ngFor="let weight of weightList">
             
-            <input class="removeButton" value ="x" type="button" (click)="remove(weight.id)">
-            
+            <img class="removeButton" src="..\..\assets\remove-button-svgrepo-com.svg" (click)="remove(weight.id)">
 
             <weight-show #show [totale]="weight.total"></weight-show>
 
@@ -27,8 +26,9 @@
             </div>
     </div>
     <div class="bottom">
-        <default-button (onClick)="addWeight();" text="Add Exercise" class="addButton">
+        <default-button (click)="addWeight();" text="Add Exercise" class="addButton">
         </default-button>
+        
     </div>
     
     
