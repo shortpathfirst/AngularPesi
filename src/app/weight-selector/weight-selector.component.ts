@@ -8,7 +8,7 @@ import {MatRadioModule} from '@angular/material/radio'
 import { DeviceService } from '../device/device.service';
 import { SettingComponent } from '../setting/setting.component';
 import {MatCheckbox} from '@angular/material/checkbox'
-import e from 'express';
+
 @Component({
   selector: 'weight-selector',
   standalone: true,
@@ -47,7 +47,7 @@ export class WeightSelectorComponent{
     return this.deviceService.deviceSettings._rastrelliera;
   }
   getSelectedTab():number{
-    return this.weightService.getSelectedTab();
+    return this.weightService.selectedTab;
   }
   changeBar(bar:number){ 
     this.weightService.setBarWeight(bar);
@@ -62,10 +62,26 @@ export class WeightSelectorComponent{
   }
   
   @HostListener('contextmenu', ['$event'])
-  removeWeight(peso: Peso,event:any) {
+  removeWeight(peso: Peso,event:Event) {
     this.weightService.removeWeight(peso);
-    event.preventDefault();
+    return false; //Disable context menu
   }
+
+  private timeStart!:number;
+  private timeEnd!:number;
+
+  holdStart(){
+    this.timeStart = new Date().getSeconds();
+  }
+  addOrRemove(peso:Peso) {
+    this.timeEnd = new Date().getSeconds();
+    let timeDiff = (this.timeEnd - this.timeStart);
+    if (timeDiff >= 1) {
+      this.weightService.removeWeight(peso);
+     }
+     else this.addWeight(peso);
+  }
+
   getBarWeights():number[]{
     return this.weightService.getBarSet();
   }

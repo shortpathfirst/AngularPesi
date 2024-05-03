@@ -23,19 +23,13 @@ export class WeightShowComponent implements OnInit,AfterViewInit,OnChanges {
   barbell!:number;
   @Input()
   totale!:number;
-  
+
   @ViewChild('divBilanciere',{static:false})
   bilanciereRef!:ElementRef;
 
   public setTotale(){}
 
   constructor(private weightService:WeightService, private deviceService:DeviceService){ 
-    if(!this.totale){
-      this.weightService.getWeightObservable().subscribe((valore)=>{
-        this.pesi = valore.pesi;
-        this.centerScrollbar();
-      })
-    }
   }
   ngOnChanges(changes: SimpleChanges): void {
     if(this.totale){ //Liftpage ha totale inizializzato
@@ -46,6 +40,12 @@ export class WeightShowComponent implements OnInit,AfterViewInit,OnChanges {
     this.centerScrollbar();
   }
   ngOnInit(): void {
+    if(isNaN(this.totale) ){
+      this.weightService.getWeightObservable().subscribe((valore)=>{
+        this.pesi = valore.pesi;
+        this.centerScrollbar();
+      });
+    }
   }
   private centerScrollbar(){
     if(!this.bilanciereRef) return;

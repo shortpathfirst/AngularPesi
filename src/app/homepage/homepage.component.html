@@ -1,11 +1,11 @@
 <div class="content" [ngStyle]="{'padding-top.rem':padding_top}">
-
-        <button class="liftButton" (click)="liftPage()">Lift page</button>
-
     <div class="totale">
         <a [ngStyle]="{color:color,'font-size.rem':fontRem}">{{total}} Kg</a> 
     </div>
-    <weight-show></weight-show>
+    <div class="weightShow">
+        <weight-show></weight-show>
+     </div>
+
     <weight-input></weight-input>
     <weight-selector></weight-selector>
    

@@ -67,14 +67,10 @@ export class LiftPageService {
   }
   updateTotal(id: number, total: string) {
     let lift = this.liftList.find(lift => lift.id == id);
-    if(!lift)  return;
-
-    if(!Number(total) || +total<20 || +total>3200) {
-      lift.total = 20;
-      this.setLiftToLocalStorage();
+    
+    if(!lift || !Number(total) || +total<20 || +total>3200) 
       return;
-    }
-
+    
     lift.total = +total;
     this.setLiftToLocalStorage();
   }

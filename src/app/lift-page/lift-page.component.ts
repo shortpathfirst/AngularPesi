@@ -35,29 +35,9 @@ export class LiftPageComponent implements OnInit,AfterViewChecked{
       this.newLift = false;
     }
   }
-  ngOnInit(): void { //status changed subscribe goes here
-    //get field value with service
+  ngOnInit(): void { 
     this.liftService.getLiftObservable().subscribe((lift)=>{this.weightList=lift;});
-    // this.descriptionForm = this.formBuilder.group({
-    //   lifts: this.formBuilder.array([
-    //     this.formBuilder.group({
-    //       name:[null,[Validators.required]],
-    //       total:[null,[Validators.required]],
-    //       set:[null,[Validators.required]],
-    //       rep:[null,[Validators.required]]
-    //     })
-    //   ])
-    // });
   } 
-  initWeightRow():FormGroup{
-    return this.formBuilder.group({
-      name:[null,[Validators.required]],
-          total:[null,[Validators.required]],
-          set:[null,[Validators.required]],
-          rep:[null,[Validators.required]]
-    });
-  }
-
 
   get fc(){
     return this.descriptionForm.controls;

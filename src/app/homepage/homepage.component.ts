@@ -4,7 +4,7 @@ import { WeightShowComponent } from '../weight-show/weight-show.component';
 import { WeightSelectorComponent } from '../weight-selector/weight-selector.component';
 import { WeightInputComponent } from '../weight-input/weight-input.component';
 import { WeightService } from '../controller/weight.service';
-import { Device } from '../device/device-detector.directive';
+import { Device } from '../directives/device-detector.directive';
 import { DeviceService } from '../device/device.service';
 import { Router } from '@angular/router';
 
@@ -32,19 +32,15 @@ export class HomepageComponent implements OnInit {
     },200);
   }
 
-  liftPage(){
-    this.router.navigateByUrl('/lifts')
-  }
-
   constructor(weightService:WeightService,private router:Router,private deviceService:DeviceService){
     weightService.getWeightObservable().subscribe((valore)=>{this.total = valore.total; this.effectTotal();})
   }
   ngOnInit(): void {
     this.deviceService.getdeviceChangedObservable().subscribe((device:Device)=>{
       if(device == Device.SMALL || device == Device.X_SMALL)
-        this.padding_top=4.5;
+        this.padding_top=3;
       else{
-        this.padding_top = 7;
+        this.padding_top = 6;
       }
 
     });

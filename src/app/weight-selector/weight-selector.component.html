@@ -10,9 +10,13 @@
             'font-size.rem':font }"
             (mouseover)="hovered=i"
             (mouseout)="hovered=-1"
-            (click)="addWeight(peso)"
+            (pointerdown)="holdStart()" 
+            (pointerup)="addOrRemove(peso)"                                   
+            (touchstart)="holdStart()" 
+            (touchend)="addOrRemove(peso)"    
             (contextmenu)="removeWeight(peso,$event)">
             
+
             {{peso.valore}}
 
           </li>

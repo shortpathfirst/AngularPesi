@@ -5,7 +5,7 @@ import { DeviceService } from '../device/device.service';
 import {MatSliderModule} from '@angular/material/slider';
 import { WeightService } from '../controller/weight.service';
 import { Peso } from '../models/Peso';
-import { Device } from '../device/device-detector.directive';
+import { Device } from '../directives/device-detector.directive';
 @Component({
   selector: 'settings',
   standalone: true,
@@ -48,7 +48,9 @@ export class SettingComponent {
   }
   
   reset(){
-    this.deviceService.deviceSettings = this.deviceService.defaultSettings;
+    this.deviceService.deviceSettings._barLength = this.deviceService.defaultSettings._barLength;
+    this.deviceService.deviceSettings._showHeight = this.deviceService.defaultSettings._showHeight;
+    this.deviceService.deviceSettings._showWidth = this.deviceService.defaultSettings._showWidth;
     this.heightIndex=4.5;
     this.widthIndex=4.5;
     this.barIndex=4.5;

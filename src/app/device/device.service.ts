@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Device, DeviceDetectorDirective } from './device-detector.directive';
+import { Device, DeviceDetectorDirective } from '../directives/device-detector.directive';
 import { DeviceSettings, Settings } from '../models/deviceSettings';
 @Injectable({
   providedIn: 'root'
@@ -36,6 +36,7 @@ resize(){
     this.deviceSettings._font=0.8;
     this.deviceSettings._rastrelliera="1500px"
     this.deviceSettings._liftPageFont=0.7;
+    this.deviceSettings._barLength = 4; 
   }
   else if(this.device==Device.SMALL){
     this.deviceSettings._selectorWidth=2;
@@ -48,6 +49,7 @@ resize(){
     this.deviceSettings._font=0.8;
     this.deviceSettings._rastrelliera="1000px"
     this.deviceSettings._liftPageFont=0.9;
+    this.deviceSettings._barLength = 6; 
   }
   else if(this.device==Device.MEDIUM){
     this.deviceSettings._selectorWidth=2.5;
@@ -60,6 +62,7 @@ resize(){
     this.deviceSettings._font=1;
     this.deviceSettings._rastrelliera="900px"
     this.deviceSettings._liftPageFont=1.1;
+    this.deviceSettings._barLength = 10; 
   }
   else if(this.device==Device.LARGE || this.device==Device.X_LARGE){ //GO BACK TO DEFAULT
     this.deviceSettings._selectorWidth=2.5;
@@ -72,7 +75,7 @@ resize(){
     this.deviceSettings._font=1.5;
     this.deviceSettings._rastrelliera="900px";
     this.deviceSettings._liftPageFont=1.5;
-    this.deviceSettings._barLength = 40; 
+    this.deviceSettings._barLength = 20; 
   }
 }
 

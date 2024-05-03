@@ -1,7 +1,7 @@
 .content{
     display: flex;
-    position: relative;
     flex-direction: column;
+    position: relative;
     row-gap: 3rem;
     width: 100%;
     background-color: rgb(242, 216, 245);
@@ -15,13 +15,14 @@
     font-size: 2.5rem;
     -webkit-user-select: none;
     user-select: none;
-}
-.totale{
-    display: flex;
-    justify-content: center;
     white-space: nowrap;
 }
-
+/* .totale{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    white-space: nowrap;
+} */
 .liftButton{
     position: absolute;
     cursor: pointer;

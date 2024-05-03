@@ -31,11 +31,11 @@ export class WeightInputComponent implements OnInit {
     
   submit(){
     this.isSubmitted = true;
-    setTimeout(()=>{this.isSubmitted = false;},5000);
     
-    if(this.pesoForm.invalid) return;
+    if(this.pesoForm.invalid){ this.isSubmitted=false; return;}
 
     this.weightService.caricaPesi(+this.fc['peso'].value);
+    this.isSubmitted = false;
   }
   reset(){
     this.weightService.resetWeight();

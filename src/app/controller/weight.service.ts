@@ -8,7 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class WeightService {
 
-  selectedTab=0; //Click on weights
+  private _selectedTab = 0; //Click on weights
+
   checkedWeightText:boolean=true;
 
   private stack:Stack = new Stack(); // HOME PAGE
@@ -37,8 +38,11 @@ export class WeightService {
     return this.weightSubject.value.pesi;
   }
 
-  getSelectedTab():number{
-    return this.selectedTab;
+  public get selectedTab() {
+    return this._selectedTab;
+  }
+  public set selectedTab(value) {
+    this._selectedTab = value;
   }
   toggleCheckBox(){
     this.checkedWeightText = !this.checkedWeightText;
@@ -86,9 +90,6 @@ export class WeightService {
     }
     found ?this.stack.pesi.splice(index+1,0,peso):this.stack.pesi.unshift(peso);
   }
-  takeKg(){
-    //TO DO
-  }
 
 caricaPesi(valoreStack:number,liftpage?:boolean):Peso[]{ //liftpage = true non agisce solo sulla view //come commento speciale
   
@@ -100,11 +101,11 @@ caricaPesi(valoreStack:number,liftpage?:boolean):Peso[]{ //liftpage = true non a
   this.loadStack(stack,refStack);
 
   if(liftpage)return refStack.pesi;
-
   this.weightSubject.next(this.stack = refStack); 
   return refStack.pesi;
 
 }
+
   private loadStack(stack:number,oggettoStack:Stack){ //riferimento al oggetto stack
     for(let peso of Stack.plates){
       if(peso.isUsable() && stack >= peso.valore){
@@ -114,14 +115,11 @@ caricaPesi(valoreStack:number,liftpage?:boolean):Peso[]{ //liftpage = true non a
           oggettoStack.pesi.unshift(peso);
           numPesi--;
         }
-      }//if totale ottenuto != stack total return new total
+      }
     }
   }
 
 removeWeight(peso: Peso) {
-  // let sameWeight = this.stack.pesi.find((p)=>{p.valore == peso.valore});
-  // if(!sameWeight) return;
-
   let index=0;
   let found =  false;
   for(let i=0; i<this.stack.pesi.length; i++){

@@ -1,4 +1,4 @@
-import { DeviceDetectorDirective } from './device-detector.directive';
+import { DeviceDetectorDirective } from '../directives/device-detector.directive';
 
 describe('DeviceDetectorDirective', () => {
   it('should create an instance', () => {

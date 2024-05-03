@@ -8,14 +8,12 @@
     margin-right:auto;
     height: 10rem;
 }
-div{
-    width: 100%;
-}
+/* Il contenuto è centrato in qualunque contenitore si trova */
 .bilanciere{
     display: flex;
-    float:right;
+    float: right;
     flex-direction: row;
-    width: 100%;
+    width: 90%;
     align-items: center;    
     position: absolute;
     overflow-x: auto;
@@ -36,12 +34,14 @@ div{
     user-select: none;
     align-items: center;
     cursor: pointer;
+    /* To fill the content of bilanciere for scroll */
+    width: 90%;
 }
 .Destro{
     flex-direction:row;
     justify-content: end;
-}
-.Sinistro{
+} 
+ .Sinistro{
     justify-content: start;
     flex-direction:row-reverse;
 }
@@ -67,10 +67,15 @@ li.dischi{
     height: 18px;
     background-color: #c5c5c5;
     cursor: pointer;
-    -webkit-user-select: none;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -webkit-touch-callout: none;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.sleeve{
+    min-width:20px;
+    min-height:28px;
+    max-width: 20px;
 }

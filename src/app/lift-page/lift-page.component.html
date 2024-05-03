@@ -1,33 +1,35 @@
 <div #scrollMe class="content">
     <div class="showRoom" > 
         <div class="weights" *ngFor="let weight of weightList">
-            <input class="remove" value ="X" type="button" (click)="remove(weight.id)">
             
+            <input class="removeButton" value ="x" type="button" (click)="remove(weight.id)">
+            
+
             <weight-show #show [totale]="weight.total"></weight-show>
-            
-                <div class="description"  [ngStyle]="{'font-size.rem':getfontLiftPage()}">
-                    <div class="stats"[ngStyle]="{'max-height.rem':getfontLiftPage()+1}">
-                        <input #name class="title" placeholder="Lift" [value]="weight.title" (keyup.enter)="updateTitle(weight.id,name.value)" [ngStyle]="{'font-size.rem':getfontLiftPage()+1.8}">
-                    </div>
-                    <div class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
-                        <label>Total:</label> 
-                        <input #total class="attribute" [value]="weight.total" (keyup)="updateTotal(weight.id,total.value)">
-                    </div>
-                    <div class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
-                        <label>Set: </label>
-                        <input #set class="attribute" [value]="weight.set"(keyup.enter)="updateSet(weight.id,set.value)">
-                    </div>
-                    <div class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
-                        <label>Rep: </label>
-                        <input #rep class="attribute" [value]="weight.rep"(keyup.enter)="updateRep(weight.id,rep.value)">
-                    </div>
-                </div>
 
-            
-        </div>
+            <div class="description"  [ngStyle]="{'font-size.rem':getfontLiftPage()}">
+                <tr class="stats"[ngStyle]="{'max-height.rem':getfontLiftPage()+1}">
+                    <input #name class="title" placeholder="Lift" [value]="weight.title" (keyup.enter)="updateTitle(weight.id,name.value)" [ngStyle]="{'font-size.rem':getfontLiftPage()+1.8}">
+                </tr>
+                <tr class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
+                    <label>Total:</label> 
+                    <input #total class="attribute" [value]="weight.total" (keyup)="updateTotal(weight.id,total.value)">
+                </tr>
+                <tr class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
+                    <label>Set: </label>
+                    <input #set class="attribute" [value]="weight.set"(keyup.enter)="updateSet(weight.id,set.value)">
+                </tr>
+                <tr class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
+                    <label>Rep: </label>
+                    <input #rep class="attribute" [value]="weight.rep"(keyup.enter)="updateRep(weight.id,rep.value)">
+                </tr>
+                
+            </div>
     </div>
-
-    <default-button (onClick)="addWeight();" text="Add Exercise" class="addButton">
-    </default-button>
-
+    <div class="bottom">
+        <default-button (onClick)="addWeight();" text="Add Exercise" class="addButton">
+        </default-button>
+    </div>
+    
+    
 </div>
