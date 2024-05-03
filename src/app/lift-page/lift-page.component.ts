@@ -19,15 +19,19 @@ import { LiftPageService } from '../controller/lift-page.service';
 export class LiftPageComponent implements OnInit,AfterViewChecked{
 
   deviceWidth!:number;
-  newLift:boolean = false;
   weightList!:Lift[];
   descriptionForm!: FormGroup;
 
-  @ViewChild('scrollMe') private myScrollContainer!:ElementRef;
-
-
-  constructor(private deviceService:DeviceService,private liftService:LiftPageService,private formBuilder:FormBuilder){
+  constructor(private deviceService:DeviceService,private liftService:LiftPageService){
     this.liftService.getLiftObservable().subscribe((lift)=>{this.weightList=lift;})
+  }
+
+  newLift:boolean = false;
+  @ViewChild('scrollMe') private myScrollContainer!:ElementRef;
+  scrollToBottom(){
+    try{
+      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+    }catch(err){}
   }
   ngAfterViewChecked(): void {
     if(this.newLift){
@@ -42,11 +46,7 @@ export class LiftPageComponent implements OnInit,AfterViewChecked{
   get fc(){
     return this.descriptionForm.controls;
   }
-  scrollToBottom(){
-    try{
-      this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-    }catch(err){}
-  }
+
 
   getfontLiftPage():number{
     return this.deviceWidth=this.deviceService.deviceSettings._liftPageFont;

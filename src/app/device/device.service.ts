@@ -79,11 +79,11 @@ resize(){
   }
 }
 
-setSettingsToLocalStorage(){
+private setSettingsToLocalStorage(){
   localStorage.setItem('Settings',JSON.stringify(this.deviceSettings));
 }
 
-getSettingsFromLocalStorage():Settings{
+private getSettingsFromLocalStorage():Settings{
   const settingJson = localStorage.getItem('Settings');
   return settingJson? JSON.parse(settingJson):new Settings();//if there's no value to localstorage
 }

@@ -99,8 +99,6 @@ label{
     border-radius: 9px;
     box-shadow: 0 0 10px blueviolet;
 } 
-/* .bottom{
-    text-align: center;
-    vertical-align: center;
-    
-} */
+.bottom{
+    margin-top: auto;
+}
