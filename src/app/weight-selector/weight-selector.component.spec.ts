@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WeightSelectorComponent } from './weight-selector.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 describe('WeightSelectorComponent', () => {
   let component: WeightSelectorComponent;
@@ -8,7 +9,8 @@ describe('WeightSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WeightSelectorComponent]
+      imports: [WeightSelectorComponent],
+      providers: [provideAnimations()] 
     })
     .compileComponents();
     

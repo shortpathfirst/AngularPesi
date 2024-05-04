@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StreamSwiperComponent } from './stream-swiper.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 describe('StreamSwiperComponent', () => {
   let component: StreamSwiperComponent;
@@ -8,7 +9,8 @@ describe('StreamSwiperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StreamSwiperComponent]
+      imports: [StreamSwiperComponent],
+      providers: [provideAnimations()] 
     })
     .compileComponents();
     

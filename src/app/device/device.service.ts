@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Device, DeviceDetectorDirective } from '../directives/device-detector.directive';
-import { DeviceSettings, Settings } from '../models/deviceSettings';
+import { Device } from '../directives/device-detector.directive';
+import { Settings } from '../models/deviceSettings';
 @Injectable({
   providedIn: 'root'
 })

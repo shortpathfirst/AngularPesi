@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputContainerComponent } from '../partials/input-container/input-container.component';
 import { DefaultButtonComponent } from '../partials/default-button/default-button.component';

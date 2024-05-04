@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DeviceDetectorDirective } from './directives/device-detector.directive';
 import { StreamSwiperComponent } from './stream-swiper/stream-swiper.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',

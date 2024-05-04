@@ -5,6 +5,7 @@ import { SwiperOptions } from 'swiper/types/swiper-options';
 import { register } from 'swiper/element/bundle';
 import { HomepageComponent } from '../homepage/homepage.component';
 import { LiftPageComponent } from '../lift-page/lift-page.component';
+
 @Component({
   selector: 'app-stream-swiper',
   standalone: true,
@@ -13,7 +14,8 @@ import { LiftPageComponent } from '../lift-page/lift-page.component';
     CommonModule,
     SwiperDirective,
     HomepageComponent,
-    LiftPageComponent],
+    LiftPageComponent,
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stream-swiper.component.html',
   styleUrl: './stream-swiper.component.css'
