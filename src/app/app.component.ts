@@ -6,7 +6,7 @@ import { StreamSwiperComponent } from './stream-swiper/stream-swiper.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [DeviceDetectorDirective,StreamSwiperComponent],
+  imports: [DeviceDetectorDirective,StreamSwiperComponent,RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

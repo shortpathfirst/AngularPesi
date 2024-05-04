@@ -1,6 +1,7 @@
 import { Directive, HostListener, OnInit } from '@angular/core';
 import { DeviceService } from '../device/device.service';
-import * as _ from 'lodash';
+import _ from 'lodash';
+
 export enum Device {
   X_SMALL,
   SMALL = 450,
