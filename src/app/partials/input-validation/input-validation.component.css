@@ -1,6 +1,7 @@
 .error-list{
     position: absolute;
     margin-left:0.4rem;
+    margin-top: -1rem;
     color:red;
     font-size: 0.95rem;
     -webkit-user-select: none;

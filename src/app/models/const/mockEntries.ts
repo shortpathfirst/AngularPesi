@@ -18,49 +18,41 @@ export const weightList2=[
       id:2,
     },
   ];
-  export const listaWork=[{
-    sets:4,
-    reps:5,
-    relInt:78,
-  },
-  {
-    sets:4,
-    reps:5,
-    relInt:80,
-  },
-  {
-    sets:5,
-    reps:3,
-    relInt:84,
-  },
-  {
-    sets:3,
-    reps:5,
-    relInt:92,
-  },
-  {
-    sets:2,
-    reps:5,
-    relInt:96,
-  },
-  {
-    sets:3,
-    reps:5,
-    relInt:100,
-  }];
 
-  export const listaW=[{
-    sets:4,
-    reps:5,
-    relInt:78,
-  },
-  {
-    sets:2,
-    reps:5,
-    relInt:96,
-  },
-  {
-    sets:3,
-    reps:5,
-    relInt:100,
-  }];
+export const squatMax = 165;
+export const benchMax = 135;
+export const deadliftMax = 205;
+export const squat = ()=>{
+  let listEx:any = [];
+  for(let i=0; i<6; i++){
+    listEx.push({
+      sets:3,
+      reps:5,
+      relInt:75+i*4,
+    })
+  }
+  return listEx;
+}
+
+export const bench = ()=>{
+  let listEx:any = [];
+  for(let i=0; i<6; i++){
+    listEx.push({
+      sets:3,
+      reps:5,
+      relInt:75+i*4,
+    })
+  }
+  return listEx;
+}
+export const deadlift = ()=>{
+  let listEx:any = [];
+  for(let i=0; i<6; i++){
+    listEx.push({
+      sets:3,
+      reps:5,
+      relInt:75+i*4,
+    })
+  }
+  return listEx;
+}

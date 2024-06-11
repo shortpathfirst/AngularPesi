@@ -5,7 +5,7 @@ import { DefaultButtonComponent } from '../partials/default-button/default-butto
 import { TextInputComponent } from '../partials/text-input/text-input.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WeightService } from '../controller/weight.service';
-import { DeviceService } from '../device/device.service';
+
 @Component({
   selector: 'weight-input',
   standalone: true,
@@ -17,7 +17,7 @@ export class WeightInputComponent implements OnInit {
   pesoForm!:FormGroup;
   isSubmitted = false;
 
-  constructor(private formBuilder:FormBuilder,private weightService:WeightService,private deviceService:DeviceService){
+  constructor(private formBuilder:FormBuilder,private weightService:WeightService){
 
   }
   ngOnInit(): void {
@@ -30,10 +30,8 @@ export class WeightInputComponent implements OnInit {
   }
     
   submit(){
-    this.isSubmitted = true;
+    if(this.pesoForm.invalid){ this.isSubmitted=true; return;}
     
-    if(this.pesoForm.invalid){ this.isSubmitted=false; return;}
-
     this.weightService.caricaPesi(+this.fc['peso'].value);
     this.isSubmitted = false;
   }

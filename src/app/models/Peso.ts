@@ -1,13 +1,11 @@
 export class Peso{
 
-    private height:string="4rem";
-    private width:string="1rem";
-
     constructor(
         private kg:number,
         private colour:string, 
         private usable:boolean,
         private id:number,
+        private size?:Size,
     ){}
 
     get valore(){
@@ -19,14 +17,22 @@ export class Peso{
     isUsable():boolean{
         return this.usable;
     }
-    getHeight():string{
-        return this.height;
+    getSize():Size{
+        if(this.size) return this.size;
+        return Size.LARGE;
     }
-    getWidth():string{
-        return this.width;
-    }
+
     toggleUsable():boolean{
         return this.usable = !this.usable;
     }
 
+}
+export enum Size{ //% OF MAX SIZE
+    X_SMALL=0.2,
+    SMALL=0.25,
+    MEDIUM=0.5,
+    X_MEDIUM=0.7,
+    XX_MEDIUM=0.8,
+    LARGE=1,
+    
 }

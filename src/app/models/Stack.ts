@@ -1,4 +1,4 @@
-import { Peso } from "./Peso";
+import { Peso, Size } from "./Peso";
 
 export class Stack{
 

@@ -1,10 +1,18 @@
+.scroll{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+}
 .container{
     max-width: 1140px;
     margin: auto;
+
+    height: 100%;
 }
 .heading{
+    position: relative;
     display: flex;
-    justify-content: space-evenly;
+    justify-content:space-evenly;
     align-items: center;
     background-color: rgb(207, 161, 240);
     color:  rgb(124, 56, 184);
@@ -15,6 +23,11 @@
     padding: .7rem 1rem;
     font-weight: 700;
     font-size: 1.7rem;
+    cursor: pointer;
+}
+.edit{
+    position: absolute;
+    left: 94%;
 }
 .title{
     display: flex;
@@ -59,10 +72,7 @@
     margin: 1rem 1rem;
     padding: .7rem 1rem;
 }
-.edit{
-    position: absolute;
-    transform: translateX(32rem) ;
-}
+
 .attribute:focus{
     outline: none !important;
     border-radius: 9px;

@@ -1,7 +1,8 @@
 <input-container [label]="label">
-    <input type="text" [placeholder] ="label" [formControl]="formControl"/>
+ 
+    <input type="tel" [placeholder] ="label" [formControl]="formControl"/>
     <input-validation 
-    [control]="control"
-    [showErrorWhen]="showErrorsWhen">
+        [control]="control"
+        [showErrorWhen]="showErrorsWhen">
     </input-validation>
 </input-container>

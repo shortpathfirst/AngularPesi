@@ -22,7 +22,7 @@ export class HomepageComponent implements OnInit {
   total!: number;
   color:string="black";
   fontRem:number=3;
-  padding_top!:number;
+
 
   effectTotal(){
     this.color="#6495ed";
@@ -38,12 +38,9 @@ export class HomepageComponent implements OnInit {
   }
   ngOnInit(): void {
     this.deviceService.getdeviceChangedObservable().subscribe((device:Device)=>{
-      if(device == Device.SMALL || device == Device.X_SMALL)
-        this.padding_top=3;
-      else{
-        this.padding_top = 6;
-      }
-
+      if(device == Device.SMALL || device == Device.X_SMALL){}
+        //padding
+   
     });
   }
   

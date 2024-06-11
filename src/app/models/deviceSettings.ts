@@ -1,4 +1,3 @@
-import { Device } from "../directives/device-detector.directive";
 import { DeviceService } from "../device/device.service";
 
 export class DeviceSettings{

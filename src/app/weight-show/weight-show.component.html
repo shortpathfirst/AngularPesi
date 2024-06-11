@@ -1,14 +1,13 @@
-
 <div class="content">
     <div class="bilanciere"#divBilanciere>
         <div class="stack Destro" (click)="activateTabPlate()">
             <li class="dischi" [ngStyle]="{
                 backgroundColor: peso.color,
                 'font-size.rem':getFontSize(),
-                'height.rem':getHeightForWeight(+peso.getHeight()), 
-                'width.rem':getWidthForWeight(+peso.getWidth())}"
+                'height.rem':getHeightForWeight(peso.getSize()), 
+                'width.rem':getWidthForWeight(peso.getSize())}"
                 *ngFor="let peso of pesi">
-                {{showWeightText(""+peso.valore)}}
+                {{getWeightText(peso.valore,peso.getSize())}}
             </li>
         </div>
         <div class="barra sleeve"  (click)="activateTabBar()">
@@ -17,7 +16,7 @@
             'min-width.rem':getBarLength() ,
             'max-width.rem':getBarLength()}" 
             (click)="activateTabBar()">
-            <p>{{showWeightText(""+getBarbell()+"kg")}} </p>
+            <p>{{getBarbell()}}kg </p>
         </div>
         <div class="barra sleeve"  (click)="activateTabBar()">
         </div>
@@ -25,10 +24,10 @@
             <li class="dischi" [ngStyle]="{
                 backgroundColor: peso.color, 
                 'font-size.rem':getFontSize(),
-                'height.rem':getHeightForWeight(+peso.getHeight()), 
-                'width.rem':getWidthForWeight(+peso.getWidth())}" 
+                'height.rem':getHeightForWeight(peso.getSize()), 
+                'width.rem':getWidthForWeight(peso.getSize())}" 
                 *ngFor="let peso of pesi">
-                {{showWeightText(""+peso.valore)}}
+                {{getWeightText(peso.valore,peso.getSize())}}
             </li>
         </div>
     </div>

@@ -3,7 +3,7 @@ export class Workout{
     private orderState = false;
 
     constructor(private _name:string,private _workout:WorkoutItem[],private _maxLift:number){
-        this.completeItem();
+        this.updateItem();
     }
 
     get name(){
@@ -26,7 +26,7 @@ export class Workout{
         this._maxLift = value;
     }
     
-    completeItem(){
+    updateItem(){
         for(const item of this.workout){
             this.calcReal(item); //must value first
             this.calcKg(item);

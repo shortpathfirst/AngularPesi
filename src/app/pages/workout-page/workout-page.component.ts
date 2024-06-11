@@ -5,7 +5,8 @@ import { Workout, WorkoutItem } from '../../models/Workout';
 import { WeightShowComponent } from '../../weight-show/weight-show.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { listaW, listaWork } from '../../models/const/mockEntries';
+import { bench, benchMax, deadlift, deadliftMax, squat, squatMax } from '../../models/const/mockEntries';
+
 @Component({
   selector: 'app-workout-page',
   standalone: true,
@@ -18,48 +19,50 @@ export class WorkoutPageComponent {
   workouts:Workout[];
 
   indexClicked:boolean[][]=[];
-  isModificable:boolean=true;
   modifyColor:string='inherit';
-  setModify(){
-    this.isModificable = !this.isModificable;
-    if(!this.isModificable)
-      this.modifyColor='purple';
-    else
-      this.modifyColor='inherit';
-   this.resetIndex();
-  }
+  indexWorkout:boolean[]=[];
+
+  // isModificable:boolean=true;
+  // setModify(){
+  //   this.isModificable = !this.isModificable;
+  //   if(!this.isModificable)
+  //     this.modifyColor='purple';
+  //   else
+  //     this.modifyColor='inherit';
+  //  this.resetIndex();
+  // }
   resetIndex(){
     for(let j=0; j<this.workouts.length; j++){
       this.indexClicked[j] = [];
     }
   }
   constructor(){
-    const w1 = new Workout("Squat",listaWork,170);
-    const w2 = new Workout("Bench",listaW,100);
-    const w3 = new Workout("Deadlift",listaWork,180);
+    const w1 = new Workout("Squat",squat(),squatMax);
+    const w2 = new Workout("Bench",bench(),benchMax);
+    const w3 = new Workout("Deadlift",deadlift(),deadliftMax);
     this.workouts = [w1,w2,w3,w1];
     this.resetIndex();
   }
 setIntensity(w:Workout,ex:WorkoutItem,value:string){
   if(!Number(+value) || +value>100 || +value<1) return;
   ex.relInt = +value;
-  w.completeItem();
+  w.updateItem();
 }
 setReps(w:Workout,ex:WorkoutItem,value:string){
   if(!Number(+value) || +value>9 || +value<1 || +value%1!=0) return;
   ex.reps = +value;
-  w.completeItem();
+  w.updateItem();
 }
 setSets(w:Workout,ex:WorkoutItem,value:string){
   if(!Number(+value) || +value<1 || +value%1!=0) return;
   ex.sets = +value;
-  w.completeItem();
+  w.updateItem();
 }
 setMaxLift(work:Workout,value:string){
   if(!Number(+value) || +value<1 || +value%1!=0) return;
 
   work.maxLift=+value;
-  work.completeItem();
+  work.updateItem();
 }
 
 getColor(workout:WorkoutItem):string{
@@ -79,7 +82,7 @@ getColor(workout:WorkoutItem):string{
 
   private getLiftFromLocalStorage():Workout[]{
     const liftJson = localStorage.getItem('Workout');
-    const baseWorkout = new Workout("Squat",listaWork,100);
+    const baseWorkout = new Workout("Squat",squat(),100);
     return liftJson ? JSON.parse(liftJson): baseWorkout; //if there's no value to localstorage
   }
 }

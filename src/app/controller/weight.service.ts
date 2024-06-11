@@ -10,7 +10,7 @@ export class WeightService {
 
   private _selectedTab = 0; //Click on weights
 
-  checkedWeightText:boolean=true;
+  isTextChecked:boolean=true;
 
   private stack:Stack = new Stack(); // HOME PAGE
   private weightSubject: BehaviorSubject<Stack> = new BehaviorSubject(this.stack); 
@@ -45,7 +45,7 @@ export class WeightService {
     this._selectedTab = value;
   }
   toggleCheckBox(){
-    this.checkedWeightText = !this.checkedWeightText;
+    this.isTextChecked = !this.isTextChecked;
   }
   getPlatesSet():Peso[]{ 
     return Stack.plates;
@@ -92,7 +92,7 @@ export class WeightService {
   }
 
 caricaPesi(valoreStack:number,liftpage?:boolean):Peso[]{ //liftpage = true non agisce solo sulla view //come commento speciale
-  
+  if(valoreStack<=20) valoreStack=20;
   let refStack:Stack;
   liftpage ? refStack=new Stack() : refStack = this.stack; //To get the barbell
   refStack.pesi=[];

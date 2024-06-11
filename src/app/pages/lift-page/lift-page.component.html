@@ -2,7 +2,7 @@
     <div class="showRoom" > 
         <div class="weights" *ngFor="let weight of weightList">
             
-            <img class="removeButton" src="..\..\assets\remove-button-svgrepo-com.svg" (click)="remove(weight.id)">
+            <img class="removeButton" src="..\..\assets\remove-button-svgrepo-com.svg" alt='' (click)="remove(weight.id)">
 
             <weight-show #show [totale]="weight.total"></weight-show>
 
@@ -12,15 +12,15 @@
                 </tr>
                 <tr class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
                     <label>Total:</label> 
-                    <input #total class="attribute" [value]="weight.total" (keyup)="updateTotal(weight.id,total.value)">
+                    <input #total class="attribute" [value]="weight.total" type= "tel" (keyup)="updateTotal(weight.id,total.value)">
                 </tr>
                 <tr class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
                     <label>Set: </label>
-                    <input #set class="attribute" [value]="weight.set"(keyup.enter)="updateSet(weight.id,set.value)">
+                    <input #set class="attribute" [value]="weight.set" type= "tel" (keyup.enter)="updateSet(weight.id,set.value)">
                 </tr>
                 <tr class="stats" [ngStyle]="{'max-height.rem':getfontLiftPage()}">
                     <label>Rep: </label>
-                    <input #rep class="attribute" [value]="weight.rep"(keyup.enter)="updateRep(weight.id,rep.value)">
+                    <input #rep class="attribute" [value]="weight.rep" type= "tel"(keyup.enter)="updateRep(weight.id,rep.value)">
                 </tr>
                 
             </div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, Component, ViewEncapsulation } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { SwiperDirective } from '../directives/swiper.directive';
 import { SwiperOptions } from 'swiper/types/swiper-options';
 import { register } from 'swiper/element/bundle';
@@ -27,20 +27,15 @@ export class StreamSwiperComponent {
     register();
 
   }
-  
+
   public config: SwiperOptions = {
     modules: [],
-    autoHeight: false,
+    autoHeight:true,
     spaceBetween: 40,
     navigation: true,
     pagination: {clickable: true, dynamicBullets: true},
     slidesPerView: 1,
-    initialSlide: 1,
-    breakpoints: {
-      400: {
-        slidesPerView: "auto",
-        centeredSlides: false
-      },
-    }
+    initialSlide: 0,
+
   }
 }

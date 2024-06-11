@@ -1,12 +1,12 @@
+<div class="scroll">
 <div class="container">
     <div class="workout" *ngFor="let w of workouts let j=index">
         <div class="title">
             <h1>{{w.name}}</h1> 
-            <input #max class="max" [value]="w.maxLift" (keyup)="setMaxLift(w,max.value)">
+            <input #max class="max" [value]="w.maxLift" type= "tel" (keyup)="setMaxLift(w,max.value)">
         </div>
          
-        
-        <div class='heading'>
+        <div class='heading' (click)="indexWorkout[j]=!indexWorkout[j]">
             <p >SETS</p>
             <p>REPS</p>
             <p class="hide-mobile not-modificable">REAL</p> 
@@ -14,26 +14,31 @@
             <p>REL INT</p> 
             <p class='hide-mobile not-modificable'>INOL</p>
             <p class='hide-mobile not-modificable'>VOLUME</p>
-            <button class="edit" mat-icon-button (click)="w.reorder();" [ngStyle]="{'background-color':modifyColor}">
+            <button class="edit" mat-icon-button (click)="w.reorder(); $event.stopPropagation();">
                 <mat-icon>sort</mat-icon>
             </button>
         </div>
-        <div class="content" *ngFor="let ex of w.workout let i = index">
+       
+       
+        <div *ngIf="!indexWorkout[j]">
+        <div class="content" *ngFor="let ex of w.workout let i = index" >
             <div class="lift-row" [ngStyle]="{'background-color':getColor(ex)}" (click)="indexClicked[j][i]=!indexClicked[j][i];">
-                <p ><input #sets class="attribute" [value]="ex.sets" (click)="$event.stopPropagation()" (keyup)="setSets(w,ex,sets.value)"></p>
-                <p><input #reps class="attribute" [value]="ex.reps" (click)="$event.stopPropagation()" (keyup)="setReps(w,ex,reps.value)"></p>
+                <p ><input #sets class="attribute" [value]="ex.sets" type= "tel" (click)="$event.stopPropagation()" (keyup)="setSets(w,ex,sets.value)"></p>
+                <p><input #reps class="attribute" [value]="ex.reps" type= "tel"(click)="$event.stopPropagation()" (keyup)="setReps(w,ex,reps.value)"></p>
                 <p class='hide-mobile'>{{ex.real}} %</p>
                 <p [ngStyle]="{'font-weight':'bolder'}">{{ex.kg}} kg</p>
-                <p class="relInt"><input #realInt class="attribute relInt" [value]="ex.relInt" (click)="$event.stopPropagation()" (keyup)="setIntensity(w,ex,realInt.value)">%</p>
+                <p class="relInt"><input #realInt class="attribute relInt" [value]="ex.relInt" type= "tel" (click)="$event.stopPropagation()" (keyup)="setIntensity(w,ex,realInt.value)">%</p>
                 <p  class='hide-mobile'>{{ex.inol}}%</p>
                 <p class='hide-mobile'>{{ex.volume}}</p>
             </div>
-            <div class="weightShow" *ngIf="indexClicked[j][i] && isModificable">
+            <div class="weightShow" *ngIf="indexClicked[j][i]">
                 <weight-show [totale]="ex.kg!"></weight-show>
             </div>
+        </div>
             <!-- <div *ngIf="indexClicked[j][i] && !isModificable">
                 
             </div> -->
         </div>
     </div>
+</div>
 </div>
