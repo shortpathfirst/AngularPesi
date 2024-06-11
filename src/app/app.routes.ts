@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomepageComponent } from './homepage/homepage.component';
-import { LiftPageComponent } from './lift-page/lift-page.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { LiftPageComponent } from './pages/lift-page/lift-page.component';
 
 export const routes: Routes = [
 

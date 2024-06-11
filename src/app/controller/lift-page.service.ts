@@ -1,36 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Lift } from '../models/Lift';
-
+import { weightList2 } from '../models/const/mockEntries';
 @Injectable({
   providedIn: 'root'
 })
 export class LiftPageService {
  
-  private weightList2=[
-    {title:"Squat",
-      total:140,
-      set:"3",
-      rep:"5",
-      id:0,
-    },
-    {title:"Bench",
-      total:105,
-      set:"3",
-      rep:"5",
-      id:1,
-    },
-    {title:"Deadlift",
-      total:165,
-      set:"1",
-      rep:"5",
-      id:2,
-    },
-  ];
   tot!:number[];
   liftList:Lift[] =this.getLiftFromLocalStorage();
   private liftSubject = new BehaviorSubject<Lift[]>(this.liftList);
-
 
   constructor() { 
   }
@@ -89,7 +68,7 @@ export class LiftPageService {
 
   private getLiftFromLocalStorage():Lift[]{
     const liftJson = localStorage.getItem('Lift');
-    return liftJson ? JSON.parse(liftJson): this.weightList2; //if there's no value to localstorage
+    return liftJson ? JSON.parse(liftJson): weightList2; //if there's no value to localstorage
   }
 
 

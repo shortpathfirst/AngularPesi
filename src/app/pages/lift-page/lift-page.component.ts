@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { WeightShowComponent } from '../weight-show/weight-show.component';
-import { DeviceService } from '../device/device.service';
+import { WeightShowComponent } from '../../weight-show/weight-show.component';
+import { DeviceService } from '../../device/device.service';
 import { FormGroup, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { DefaultButtonComponent } from '../partials/default-button/default-button.component';
-import { Lift } from '../models/Lift';
-import { LiftPageService } from '../controller/lift-page.service';
+import { DefaultButtonComponent } from '../../partials/default-button/default-button.component';
+import { Lift } from '../../models/Lift';
+import { LiftPageService } from '../../controller/lift-page.service';
 
 
 @Component({

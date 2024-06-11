@@ -48,10 +48,10 @@ export class WeightService {
     this.checkedWeightText = !this.checkedWeightText;
   }
   getPlatesSet():Peso[]{ 
-    return Stack.defaultSet;
+    return Stack.plates;
   }
   getBarSet():number[]{
-    return Stack.BarSet;
+    return Stack.barSet;
   }
   getBarWeight(){
     return this.stack.barbell;

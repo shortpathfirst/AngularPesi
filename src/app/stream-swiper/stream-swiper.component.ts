@@ -3,8 +3,9 @@ import { CUSTOM_ELEMENTS_SCHEMA, Component, ViewEncapsulation } from '@angular/c
 import { SwiperDirective } from '../directives/swiper.directive';
 import { SwiperOptions } from 'swiper/types/swiper-options';
 import { register } from 'swiper/element/bundle';
-import { HomepageComponent } from '../homepage/homepage.component';
-import { LiftPageComponent } from '../lift-page/lift-page.component';
+import { HomepageComponent } from '../pages/homepage/homepage.component';
+import { LiftPageComponent } from '../pages/lift-page/lift-page.component';
+import { WorkoutPageComponent } from '../pages/workout-page/workout-page.component';
 
 @Component({
   selector: 'app-stream-swiper',
@@ -15,6 +16,7 @@ import { LiftPageComponent } from '../lift-page/lift-page.component';
     SwiperDirective,
     HomepageComponent,
     LiftPageComponent,
+    WorkoutPageComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './stream-swiper.component.html',
@@ -25,6 +27,7 @@ export class StreamSwiperComponent {
     register();
 
   }
+  
   public config: SwiperOptions = {
     modules: [],
     autoHeight: false,
@@ -32,7 +35,7 @@ export class StreamSwiperComponent {
     navigation: true,
     pagination: {clickable: true, dynamicBullets: true},
     slidesPerView: 1,
-    centeredSlides: true,
+    initialSlide: 1,
     breakpoints: {
       400: {
         slidesPerView: "auto",

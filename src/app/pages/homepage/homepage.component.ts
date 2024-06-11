@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { WeightShowComponent } from '../weight-show/weight-show.component';
-import { WeightSelectorComponent } from '../weight-selector/weight-selector.component';
-import { WeightInputComponent } from '../weight-input/weight-input.component';
-import { WeightService } from '../controller/weight.service';
-import { Device } from '../directives/device-detector.directive';
-import { DeviceService } from '../device/device.service';
+import { WeightShowComponent } from '../../weight-show/weight-show.component';
+import { WeightSelectorComponent } from '../../weight-selector/weight-selector.component';
+import { WeightInputComponent } from '../../weight-input/weight-input.component';
+import { WeightService } from '../../controller/weight.service';
+import { Device } from '../../directives/device-detector.directive';
+
 import { Router } from '@angular/router';
+import { DeviceService } from '../../device/device.service';
 
 
 @Component({

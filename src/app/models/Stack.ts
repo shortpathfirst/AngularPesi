@@ -21,20 +21,10 @@ export class Stack{
         Stack.ONE,
         Stack.HALFONE];
 
-    private static barSet:number[] = [10,12,15,20];
-
-    static get defaultSet():Peso[]{
-        return Stack.plates;
-    }
+    static readonly barSet:number[] = [10,12,15,20];
 
     pesi:Peso[] = []; //pesi usati
     barbell:number=20;
     total:number=260; //with bar
-
-
-
-    static get BarSet():number[]{
-        return Stack.barSet;
-    }
     
 }

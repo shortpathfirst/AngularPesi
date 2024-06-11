@@ -15,7 +15,7 @@ type:'submit' | 'button' = 'submit';
 @Input()
 text:string = 'Submit';
 @Input()
-bgColor = '#e72929'
+bgColor = '#8042b3'
 @Input()
 color = 'white';
 @Input()

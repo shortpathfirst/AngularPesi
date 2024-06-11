@@ -39,7 +39,7 @@ export class SettingComponent {
 
   }
   setPlateWidth(event: any) {
-    this.deviceService.deviceSettings._showWidth = this.deviceService.defaultSettings._showWidth *25/100*((event.target.value-1/4 )-0.5);
+    this.deviceService.deviceSettings._showWidth = this.deviceService.defaultSettings._showWidth * 15/100*((event.target.value )-0.5);
 
   }
   setBarLength(event: any) {

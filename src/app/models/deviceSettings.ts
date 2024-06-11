@@ -5,13 +5,6 @@ export class DeviceSettings{
 
     constructor(private deviceService:DeviceService){
         
-
-    }
-
-    observeChange(deviceService:DeviceService){
-        deviceService.getdeviceChangedObservable().subscribe((device: Device) =>{
-            return;
-        });
     }
         
 }
